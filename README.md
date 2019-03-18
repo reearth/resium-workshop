@@ -204,7 +204,7 @@ class App extends React.PureComponent {
 
 ### 5. [ADVANCED] Add splash screen
 
-Please refer to [`complete` branch](https://github.com/darwin-education/resium-workshop/tree/complete).
+Please refer to [`completed` branch](https://github.com/darwin-education/resium-workshop/tree/completed).
 
 ## If you have a question
 
