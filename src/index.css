@@ -12,3 +12,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.splashscreen {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+.splashscreen-enter {
+  opacity: 0;
+}
+
+.splashscreen-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.splashscreen-exit {
+  opacity: 1;
+}
+
+.splashscreen-exit-active {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
