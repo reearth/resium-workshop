@@ -55,6 +55,7 @@ class App extends React.PureComponent {
       <Viewer
         full
         animation={false}
+        homeButton={false}
         timeline={false}
         baseLayerPicker={false}
         ref={this.viewerRef}
