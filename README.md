@@ -2,34 +2,37 @@
 
 This is a repository for [Resium](https://github.com/darwin-education/resium) workshop at [FOSS4G-NA 2019](https://2019.foss4g-na.org/).
 
-## Workshop's Goal
+In this workshop, I’ll tell you how to use Resium, and we’ll work on building a Japanese archaic map archive. Resium is a new library, abstracting Cesium functions as React components, and helping to build a rich web 3D GIS web-application faster.
 
-Create a Japanese archaic map archive with Resium, Cesium and React.
+![Image](image.png)
 
-## Workshop's Target
+## Workshop Target
 
-- Who want to learn how to use React and Cesium
-- Who want to learn how to build a modern front-end web application
+Anyone who have been interested in web front-end, React, or Cesium
 
-## Required preparation
+## Workshop Goal
+
+To create a Japanese archaic map archive with Resium, Cesium and React.
+
+## Required Preparation
 
 1. Install Git, Node.js (LTS) and your favorite text editor.
 2. Clone this repository
 3. Install modules: `npm install`
 
-## Workshop programs
+## Workshop Programs
 
-### 1. Hello world
+### 1. Hello World
 
 In this step, we try to display an entity in Cesium's viewer.
 
-#### 1. Start development server
+#### 1-1. Start development server
 
 ```
 npm start
 ```
 
-#### 2. Add an entity
+#### 1-2. Add an entity
 
 ```js
 import { Cartesian3 } from "cesium";
@@ -44,7 +47,7 @@ import { Viewer, Entity } from "resium";
 </Viewer>
 ```
 
-#### 3. Change the entity's name and description
+#### 1-3. Change the entity's name and description
 
 ```jsx
 <Viewer full>
@@ -56,7 +59,7 @@ import { Viewer, Entity } from "resium";
 </Viewer>
 ```
 
-#### 4. Write description in HTML
+#### 1-4. Write description in HTML
 
 ```js
 import { Cartesian3 } from "cesium";
@@ -77,7 +80,7 @@ import { Viewer, Entity, EntityDescription } from "resium";
 </Viewer>
 ```
 
-#### 5. Try to change other properties
+#### 1-5. Try to change other properties
 
 You will see how HMR (hot module replacement) works.
 
@@ -100,7 +103,7 @@ import { Viewer, Entity, EntityDescription, PointGraphics } from "resium";
 </Viewer>
 ```
 
-#### 6. Adjust camera position
+#### 1-6. Adjust camera position
 
 ```js
 import { BoundingSphere, HeadingPitchRange } from "cesium";
@@ -114,6 +117,17 @@ import { Viewer, CameraFlyToBoundingSphere } from "resium";
     offset={new HeadingPitchRange(0, CesiumMath.toRadians(-30), 80000)}
     duration={3} />
 </Viewer>
+```
+
+#### 1-7. Hide extra widgets
+
+```js
+<Viewer
+  full
+  animation={false}
+  homeButton={false}
+  timeline={false}
+  baseLayerPicker={false} />
 ```
 
 The first step is done!
@@ -200,7 +214,7 @@ class App extends React.PureComponent {
 };
 ```
 
-### 5. Add slider to change tile alpha
+### 5. Add a slider to change tile alpha
 
 ```jsx
 class App extends React.PureComponent {
@@ -232,7 +246,7 @@ class App extends React.PureComponent {
 
 ### 6. [ADVANCED] Add splash screen
 
-Please refer to [`complete` branch](https://github.com/darwin-education/resium-workshop/tree/complete).
+Please refer to [`completed` branch](https://github.com/darwin-education/resium-workshop/tree/completed).
 
 ## If you have a question
 
