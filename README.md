@@ -1,6 +1,6 @@
 # resium-workshop
 
-This is a repository for [Resium](https://github.com/darwin-education/resium) workshop at [FOSS4G NA 2019](https://2019.foss4g-na.org/).
+This is a repository for [Resium](https://github.com/darwin-education/resium) workshop at [FOSS4G-NA 2019](https://2019.foss4g-na.org/).
 
 ## Workshop's Goal
 
