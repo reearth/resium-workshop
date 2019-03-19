@@ -22,6 +22,10 @@ const defaultImageryProvider = createWorldImagery();
 class App extends React.PureComponent {
   viewerRef = React.createRef();
 
+  state = {
+    tileAlpha: 100
+  };
+
   handleSelectedEntityChanged = () => {
     if (!this.viewerRef.current || !this.viewerRef.current.cesiumElement) {
       return;
@@ -53,7 +57,7 @@ class App extends React.PureComponent {
         onSelectedEntityChange={this.handleSelectedEntityChanged}>
         <ImageryLayerCollection>
           <ImageryLayer imageryProvider={defaultImageryProvider} />
-          <ImageryLayer imageryProvider={imageryProvider} />
+          <ImageryLayer imageryProvider={imageryProvider} alpha={this.state.tileAlpha / 100} />
         </ImageryLayerCollection>
         <KmlDataSource
           data={process.env.PUBLIC_URL + "/doc.kml"}
@@ -67,6 +71,14 @@ class App extends React.PureComponent {
             <p>test</p>
           </EntityDescription>
         </Entity>
+        <div className="tile-alpha-slider">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={this.state.tileAlpha}
+            onChange={e => this.setState({ tileAlpha: parseInt(e.currentTarget.value, 10) })} />
+        </div>
         <SplashScreen />
       </Viewer>
     );

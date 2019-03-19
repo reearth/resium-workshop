@@ -10,6 +10,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.tile-alpha-slider {
+  position: absolute;
+  right: 0;
+  bottom: 40px;
+  padding: 10px;
+}
+
 .splashscreen {
   display: flex;
   justify-items: center;
