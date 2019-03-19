@@ -6,7 +6,7 @@ import {
   createWorldImagery,
   BoundingSphere
 } from 'cesium';
-import { Viewer, ImageryLayerCollection, ImageryLayer, KmlDataSource, Entity, EntityDescription } from 'resium';
+import { Viewer, ImageryLayer, KmlDataSource, Entity, EntityDescription } from 'resium';
 import SplashScreen from './SprashScreen';
 
 const imageryProvider = createOpenStreetMapImageryProvider({
@@ -46,6 +46,10 @@ class App extends React.PureComponent {
     });
   };
 
+  handleTileAlphaChange = e => {
+    this.setState({ tileAlpha: parseInt(e.currentTarget.value, 10) });
+  }
+
   render() {
     return (
       <Viewer
@@ -55,10 +59,8 @@ class App extends React.PureComponent {
         baseLayerPicker={false}
         ref={this.viewerRef}
         onSelectedEntityChange={this.handleSelectedEntityChanged}>
-        <ImageryLayerCollection>
-          <ImageryLayer imageryProvider={defaultImageryProvider} />
-          <ImageryLayer imageryProvider={imageryProvider} alpha={this.state.tileAlpha / 100} />
-        </ImageryLayerCollection>
+        <ImageryLayer imageryProvider={defaultImageryProvider} />
+        <ImageryLayer imageryProvider={imageryProvider} alpha={this.state.tileAlpha / 100} />
         <KmlDataSource
           data={process.env.PUBLIC_URL + "/doc.kml"}
           onLoad={this.handleKmlLoad} />
@@ -77,7 +79,7 @@ class App extends React.PureComponent {
             min="0"
             max="100"
             value={this.state.tileAlpha}
-            onChange={e => this.setState({ tileAlpha: parseInt(e.currentTarget.value, 10) })} />
+            onChange={this.handleTileAlphaChange} />
         </div>
         <SplashScreen />
       </Viewer>

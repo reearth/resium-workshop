@@ -122,7 +122,7 @@ The first step is done!
 
 ```js
 import { createOpenStreetMapImageryProvider, createWorldImagery } from "cesium";
-import { Viwer, ImageryLayerCollection, ImageryLayer } from "resium";
+import { Viwer, ImageryLayer } from "resium";
 ```
 
 ```js
@@ -139,10 +139,8 @@ const imageryProvider = createOpenStreetMapImageryProvider({
 
 ```jsx
 <Viewer full>
-  <ImageryLayerCollection>
-    <ImageryLayer imageryProvider={defaultImageryProvider} />
-    <ImageryLayer imageryProvider={imageryProvider} />
-  </ImageryLayerCollection>
+  <ImageryLayer imageryProvider={defaultImageryProvider} />
+  <ImageryLayer imageryProvider={imageryProvider} />
 </Viewer>
 ```
 
@@ -202,7 +200,37 @@ class App extends React.PureComponent {
 };
 ```
 
-### 5. [ADVANCED] Add splash screen
+### 5. Add slider to change tile alpha
+
+```jsx
+class App extends React.PureComponent {
+  state = {
+    tileAlpha: 100
+  }
+
+  handleTileAlphaChange = e => {
+    this.setState({ tileAlpha: parseInt(e.currentTarget.value, 10) });
+  }
+
+  render() {
+    return (
+      <Viewer full>
+        <ImageryLayer
+          imageryProvider={imageryProvider}
+          alpha={this.state.tileAlpha / 100} />
+        <input
+          type="range"
+          min="0"
+          max="0"
+          value={this.state.tileAlpha}
+          onChange={this.handleTileAlphaChange} />
+      </Viewer>
+    )
+  }
+}
+```
+
+### 6. [ADVANCED] Add splash screen
 
 Please refer to [`complete` branch](https://github.com/darwin-education/resium-workshop/tree/complete).
 
