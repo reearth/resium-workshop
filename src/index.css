@@ -1,16 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .splashscreen {
@@ -18,6 +15,7 @@ code {
   justify-items: center;
   align-items: center;
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
   bottom: 0;
@@ -25,6 +23,11 @@ code {
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
+}
+
+.splashImg {
+  margin: 0 auto;
+  display: block;
 }
 
 .splashscreen-enter {
@@ -42,5 +45,5 @@ code {
 
 .splashscreen-exit-active {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2.5s ease-in-out;
 }

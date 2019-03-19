@@ -2,6 +2,7 @@ import React from "react";
 import { CSSTransition } from "react-transition-group";
 import { CameraFlyToBoundingSphere } from "resium";
 import { BoundingSphere, Cartesian3, HeadingPitchRange, Math as CesiumMath } from "cesium";
+import SplashScreenImg from "./splash.png";
 
 const seriesTimeout = items => {
   const timeouts = items.map((item, i) =>
@@ -55,13 +56,13 @@ class SplashScreen extends React.PureComponent {
         )}
         <CSSTransition
           in={this.state.show}
-          timeout={1000}
+          timeout={2500}
           classNames="splashscreen"
           mountOnEnter
           unmountOnExit>
           {() => (
             <div className="splashscreen">
-              <h1>Hello</h1>
+              <img src={SplashScreenImg} className="splashImg" />
             </div>
           )}
         </CSSTransition>
