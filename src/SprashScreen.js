@@ -62,7 +62,10 @@ class SplashScreen extends React.PureComponent {
           unmountOnExit>
           {() => (
             <div className="splashscreen">
-              <img src={SplashScreenImg} className="splashImg" />
+              <img
+                src={SplashScreenImg}
+                className="splashImg"
+                alt="Japanese Archeic Map Archives" />
             </div>
           )}
         </CSSTransition>
