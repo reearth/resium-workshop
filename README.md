@@ -1,35 +1,38 @@
 # resium-workshop
 
-This is a repository for [Resium](https://github.com/darwin-education/resium) workshop at [FOSS4G NA 2019](https://2019.foss4g-na.org/).
+This is a repository for [Resium](https://github.com/darwin-education/resium) workshop at [FOSS4G-NA 2019](https://2019.foss4g-na.org/).
 
-## Workshop's Goal
+In this workshop, I’ll tell you how to use Resium, and we’ll work on building a Japanese archaic map archive. Resium is a new library, abstracting Cesium functions as React components, and helping to build a rich web 3D GIS web-application faster.
 
-Create a Japanese archaic map archive with Resium, Cesium and React.
+![Image](image.png)
 
-## Workshop's Target
+## Workshop Target
 
-- Who want to learn how to use React and Cesium
-- Who want to learn how to build a modern front-end web application
+Anyone who have been interested in web front-end, React, or Cesium
 
-## Required preparation
+## Workshop Goal
+
+To create a Japanese archaic map archive with Resium, Cesium and React.
+
+## Required Preparation
 
 1. Install Git, Node.js (LTS) and your favorite text editor.
 2. Clone this repository
 3. Install modules: `npm install`
 
-## Workshop programs
+## Workshop Programs
 
-### 1. Hello world
+### 1. Hello World
 
 In this step, we try to display an entity in Cesium's viewer.
 
-#### 1. Start development server
+#### 1-1. Start development server
 
 ```
 npm start
 ```
 
-#### 2. Add an entity
+#### 1-2. Add an entity
 
 ```js
 import { Cartesian3 } from "cesium";
@@ -44,7 +47,7 @@ import { Viewer, Entity } from "resium";
 </Viewer>
 ```
 
-#### 3. Change the entity's name and description
+#### 1-3. Change the entity's name and description
 
 ```jsx
 <Viewer full>
@@ -56,7 +59,7 @@ import { Viewer, Entity } from "resium";
 </Viewer>
 ```
 
-#### 4. Write description in HTML
+#### 1-4. Write description in HTML
 
 ```js
 import { Cartesian3 } from "cesium";
@@ -77,7 +80,7 @@ import { Viewer, Entity, EntityDescription } from "resium";
 </Viewer>
 ```
 
-#### 5. Try to change other properties
+#### 1-5. Try to change other properties
 
 You will see how HMR (hot module replacement) works.
 
@@ -100,7 +103,7 @@ import { Viewer, Entity, EntityDescription, PointGraphics } from "resium";
 </Viewer>
 ```
 
-#### 6. Adjust camera position
+#### 1-6. Adjust camera position
 
 ```js
 import { BoundingSphere, HeadingPitchRange } from "cesium";
@@ -116,13 +119,24 @@ import { Viewer, CameraFlyToBoundingSphere } from "resium";
 </Viewer>
 ```
 
+#### 1-7. Hide extra widgets
+
+```js
+<Viewer
+  full
+  animation={false}
+  homeButton={false}
+  timeline={false}
+  baseLayerPicker={false} />
+```
+
 The first step is done!
 
 ### 2. Add Japanese archaic tile map
 
 ```js
 import { createOpenStreetMapImageryProvider, createWorldImagery } from "cesium";
-import { Viwer, ImageryLayerCollection, ImageryLayer } from "resium";
+import { Viwer, ImageryLayer } from "resium";
 ```
 
 ```js
@@ -139,10 +153,8 @@ const imageryProvider = createOpenStreetMapImageryProvider({
 
 ```jsx
 <Viewer full>
-  <ImageryLayerCollection>
-    <ImageryLayer imageryProvider={defaultImageryProvider} />
-    <ImageryLayer imageryProvider={imageryProvider} />
-  </ImageryLayerCollection>
+  <ImageryLayer imageryProvider={defaultImageryProvider} />
+  <ImageryLayer imageryProvider={imageryProvider} />
 </Viewer>
 ```
 
@@ -202,7 +214,37 @@ class App extends React.PureComponent {
 };
 ```
 
-### 5. [ADVANCED] Add splash screen
+### 5. Add a slider to change tile alpha
+
+```jsx
+class App extends React.PureComponent {
+  state = {
+    tileAlpha: 100
+  }
+
+  handleTileAlphaChange = e => {
+    this.setState({ tileAlpha: parseInt(e.currentTarget.value, 10) });
+  }
+
+  render() {
+    return (
+      <Viewer full>
+        <ImageryLayer
+          imageryProvider={imageryProvider}
+          alpha={this.state.tileAlpha / 100} />
+        <input
+          type="range"
+          min="0"
+          max="0"
+          value={this.state.tileAlpha}
+          onChange={this.handleTileAlphaChange} />
+      </Viewer>
+    )
+  }
+}
+```
+
+### 6. [ADVANCED] Add splash screen
 
 Please refer to [`completed` branch](https://github.com/darwin-education/resium-workshop/tree/completed).
 
